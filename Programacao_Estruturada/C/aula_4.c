@@ -47,5 +47,5 @@ void imprime(int *p, int q) {
   int i;
   for (i = 0; i < q; i++, p++) {
     printf("\nElemento [%d]: %d", i, *p);
-  } /// imprime
-}
+  } /// imprime 
+
