@@ -12,13 +12,13 @@ float* aloca_float(int tam) {
 
 int main() {
     int n;
-    printf("Quantos números reais? ");
+    printf("Quantos numeros reais? ");
     scanf("%d", &n);
 
     float *vetor = aloca_float(n);
 
     for (int i = 0; i < n; i++) {
-        printf("Digite o %dº valor: ", i+1);
+        printf("Digite o %d valor: ", i+1);
         scanf("%f", &vetor[i]);
     }
 
