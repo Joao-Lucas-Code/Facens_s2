@@ -20,7 +20,7 @@ void recebe(float *p, int tam)
 {
   for (int i = 0; i < tam; i++)
   {
-    printf("\nDigite o valor para o elemento %d: ", i);
+    printf("\nDigite o valor para o elemento %d: ", i+1);
     scanf("%f", &p[i]);
   }
 }
