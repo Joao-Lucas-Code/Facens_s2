@@ -14,9 +14,8 @@ void recebe(float *p, int tam)
 {
   for (int i = 0; i < tam; i++)
   {
-    printf("\nElemento [%d]: ", i+1);
+    printf("\nDigite o valor para o elemento %d: ", i);
     scanf("%f", &p[i]);
-    fflush(stdin);
   }
 }
 
