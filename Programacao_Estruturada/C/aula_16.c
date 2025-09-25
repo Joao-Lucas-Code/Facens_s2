@@ -37,7 +37,6 @@ int main()
       printf("Nome: %s, Idade: %d\n", a[i].nome, a[i].idade);
     }
   }
-
   return 0;
 }
 
