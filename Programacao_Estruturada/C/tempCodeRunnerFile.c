@@ -1,5 +1,2 @@
 
-
-void aloca_int(float **p, int tam)
-{
-  if ((*p = (float *)realloc(*p, tam * sizeof(float))) == NULL)
+      case 3: pos=busca(pcli, cont);
