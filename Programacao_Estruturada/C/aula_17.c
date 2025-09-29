@@ -27,7 +27,7 @@ int main(){
           {
             cadastro(pcli+cont);
             cont++;
-          }//if
+          }// If
         else
           printf("\nLimite de clientes atingido\n");
           break;
@@ -36,14 +36,14 @@ int main(){
         if(pos>=0)
         {
           movimenta(pcli+pos, op);
-        }//if
+        }// If
         else
           printf("\nConta nao encontrada\n");
         system("pause");
         break;
-      } // switch
+      } // Switch
   } while(op != 4);
-} // main 
+} // Main 
 
 void cadastro(struct cliente *p)
 {
@@ -74,7 +74,7 @@ int busca (struct cliente *p, int tam)
   }
   
   return -1; // Retorna -1 se não encontrar a conta
-}// busca
+}// Busca
 void movimenta(struct cliente *p, int op)
 {
   float valor;
@@ -91,4 +91,4 @@ void movimenta(struct cliente *p, int op)
     p->saldo-=valor;
 
   printf("\nSaldo atualizado: %.2f\n\n",p->saldo);
-}// movimenta 
+}// Movimenta 
