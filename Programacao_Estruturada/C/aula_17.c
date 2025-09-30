@@ -18,6 +18,7 @@ int main(){
   pcli = cli;
   do{
     system("cls");
+    printf("\n-------------------Banco Facens-------------------\n");
     printf("\n[1]Cadastro\n[2]Deposito\n[3]Retirada\n[4]Fim\nOPCAO:");
       scanf("%i", &op);
       fflush(stdin);
