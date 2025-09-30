@@ -1,4 +1,4 @@
-// Exercicio Feito pela professora Andreia com 
+// Exercicio Feito pela professora Andreia com
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -43,7 +43,7 @@ int main(){
         break;
       } // Switch
   } while(op != 4);
-} // Main 
+} // Main
 
 void cadastro(struct cliente *p)
 {
@@ -62,17 +62,17 @@ void cadastro(struct cliente *p)
 int busca (struct cliente *p, int tam)
 {
   int conta_procurada, i;
-  
+
   printf("\nDigite o numero da conta: ");
   scanf("%d", &conta_procurada);
   fflush(stdin);
-  
+
   for(i = 0; i < tam; i++) {
     if(p[i].conta == conta_procurada) {
       return i; // Retorna a posição do cliente encontrado
     }
   }
-  
+
   return -1; // Retorna -1 se não encontrar a conta
 }// Busca
 void movimenta(struct cliente *p, int op)
@@ -109,4 +109,4 @@ void movimenta(struct cliente *p, int op)
   }
 
   printf("\nSaldo atualizado: %.2f\n\n",p->saldo);
-}// Movimenta 
+}// Movimenta
