@@ -80,15 +80,33 @@ void movimenta(struct cliente *p, int op)
   float valor;
   printf("\nNome: %s\nSaldo: %.2f\n\n",p->nome,p->saldo);
   if(op==2)
+  {
     printf("\nValor a ser depositado: ");
+    scanf("%f", &valor);
+    fflush(stdin);
+    if(valor > 0)
+    {
+      p->saldo+=valor;
+      printf("\nDeposito realizado com sucesso!");
+    }
+    else
+      printf("\nValor invalido para deposito!");
+  }
   else
+  {
     printf("\nValor a ser retirado: ");
-  scanf("%f", &valor);
-  fflush(stdin);
-  if(op==2)
-    p->saldo+=valor;
-  else
-    p->saldo-=valor;
+    scanf("%f", &valor);
+    fflush(stdin);
+    if(valor > 0 && valor <= p->saldo)
+    {
+      p->saldo-=valor;
+      printf("\nRetirada realizada com sucesso!");
+    }
+    else if(valor > p->saldo)
+      printf("\nSaldo insuficiente! Saldo atual: %.2f", p->saldo);
+    else
+      printf("\nValor invalido para retirada!");
+  }
 
   printf("\nSaldo atualizado: %.2f\n\n",p->saldo);
 }// Movimenta 
