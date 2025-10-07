@@ -15,7 +15,7 @@ void buscar(Produto *p, int tam, int cod_busca);
 void listar(Produto *p, int tam);
 
 int main(){
-  
+
 }
 
 void buscar(Produto *p, int tam, int cod_busca) {
@@ -27,3 +27,19 @@ void buscar(Produto *p, int tam, int cod_busca) {
   return 1;
 }
 
+void listar(Produto *p, int tam); { 
+  int i;
+  if (tam == 0) {
+    printf("\nEstoque Vazio!\n");
+    return;
+  }
+
+  for(i = 0; i < tam; i++) {
+    printf("------------------------\n");
+        printf("Codigo: %d\n", (p + i)->codigo); 
+        printf("Nome: %s\n", (p + i)->nome);
+        printf("Preco: R$ %.2f\n", (p + i)->preco);
+        printf("Quantidade: %d un\n", (p + i)->quantidade);
+    }
+    printf("------------------------\n");
+}
