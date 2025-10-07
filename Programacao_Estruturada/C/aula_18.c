@@ -13,8 +13,7 @@ void aloca(Produto **p, int tam);
 void cadastrar(Produto *p);
 int buscar(Produto *p, int tam, int cod_busca);
 void listar(Produto *p, int tam);
-// void atualizar(Produto *p);
-// void remover(Produto **p, int *tam);
+void remover(Produto **p, int *tam);
 
 int main(){
   Produto *estoque = NULL;
@@ -26,7 +25,9 @@ int main(){
     printf("\n--- CONTROLE DE ESTOQUE ---\n");
     printf("[1] Cadastrar Produto\n");
     printf("[2] Listar Produtos\n");
-    // etc...
+    printf("[3] Atualizar Estoque\n"); 
+    printf("[4] Remover Produto\n");   
+    printf("[5] Sair\n");             
     printf("Opcao: ");
     scanf("%i", &op);       
     
@@ -79,6 +80,19 @@ int main(){
             printf("\nEstoque atualizado com sucesso!\n");
             printf("Novo estoque: %d\n", (estoque + indice_encontrado)->quantidade);
         }
+        break;
+
+      case 4:
+            remover(&estoque, &cont);
+            break;
+
+        case 5: 
+            printf("\nSaindo do sistema...\n");
+            break;
+
+        default: 
+            printf("\nERRO: Opcao invalida!\n");
+            break;
     }
     break;
     }
@@ -149,4 +163,45 @@ void cadastrar(Produto *p) {
     fflush(stdin);
 
     printf("\nProduto #%i - %s cadastrado!\n", p->codigo, p->nome);
+}
+
+void remover(Produto **p, int *tam) {
+    int codigo_busca;
+    int indice_encontrado;
+
+    if (*tam == 0) {
+        printf("\nEstoque Vazio! Nada para remover.\n");
+        return;
+    }
+
+    printf("\n-- Removendo Produto --\n");
+    printf("Digite o codigo do produto a ser removido: ");
+    scanf("%i", &codigo_busca);
+    fflush(stdin);
+
+    indice_encontrado = buscar(*p, *tam, codigo_busca);
+
+    if (indice_encontrado == -1) {
+        printf("\nERRO: Produto com codigo %d nao encontrado!\n", codigo_busca);
+    } else {
+        printf("\nProduto encontrado: %s\n", (*p + indice_encontrado)->nome);
+        
+        // A mágica acontece aqui:
+        // Copia o último elemento para a posição do elemento a ser removido
+        *(*p + indice_encontrado) = *(*p + (*tam - 1));
+
+        // Diminui o contador ANTES de realocar
+        (*tam)--;
+
+        if (*tam == 0) {
+            // Se esvaziou a lista, libera a memória e aponta pra NULL
+            free(*p);
+            *p = NULL;
+        } else {
+            // Se ainda tem itens, apenas diminui o tamanho do vetor
+            aloca(p, *tam);
+        }
+
+        printf("\nProduto removido com sucesso!\n");
+    }
 }
