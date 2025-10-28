@@ -20,3 +20,9 @@ int main{
   aloca_quarto(&pq,15);
   cadastra_quarto(pq,15)
 }
+
+void aloca_quarto(quarto **q, int tam)
+{
+  if((*q = (quarto*)realloc(*q, tam*sizeof(quarto))) == NULL)
+  exit(1);
+}
