@@ -99,3 +99,20 @@ void cadastra_hospede(hospede *h, quarto *q, int qq)
         h->categoria='F';
     // ...
 }
+
+void cadastra_hospede(hospede *h, quarto *q, int qq)
+{
+  printf("\nNome: ");
+  gets(h->nome);
+  fflush(stdin);
+  do{
+    printf("\nQtde de acompanhantes - max.3: ");
+        scanf("%i",&h->acompanhante);
+        fflush(stdin);
+  }while(h->acompanhante<0 || h->acompanhante>3);
+
+  if(h->acompanhante==0)
+    h->categoria='S';
+  else
+    h->categoria='F';
+}
