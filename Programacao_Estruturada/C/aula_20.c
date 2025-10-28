@@ -50,7 +50,7 @@ void cadastra_quarto(quarto *q, int tam)
   {
     q->num = i+1; // -> acessa um campo
     /* status é um char, use literal de caractere */
-    q->status = 'L';
+    q->status = 'L'; // todos livres no cadastro
     if (i<5)
       q->categoria = 'S';
     else
