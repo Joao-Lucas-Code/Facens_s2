@@ -18,6 +18,9 @@ typedef struct hospede{
 /* protótipos (evitam declarações implícitas) */
 void aloca_quarto(quarto **q, int tam);
 void cadastra_quarto(quarto *q, int tam);
+void aloca_hospede(hospede **h, int tam);
+void cadastra_hospede(hospede *h, quarto *q, int qq);
+int busca_hospede(hospede *h, int tam);
 
 int main(void)
 {
@@ -31,6 +34,27 @@ int main(void)
   /* liberar memória antes de sair */
   free(pq);
   return 0;
+
+  do{
+    system("cls");
+    printf("\n[1]Check-in\n[2]Check-out\n[3]Mostra Quarto\n[4]Mostra Hospedes\n[5]Fim\nOpcao:");
+    scanf("%i", &op);
+    fflush(stdin);
+    switch(op)
+    {
+      case 1: // Check=in
+      // Procure na lista de hospedes se alguem cujo quarto é -1 (DEU CHECK-OUT)
+      pos = busca_hospede(ph, cont, -1); 
+        if(pos == -1)
+        {
+          aloca_hospede(&ph, cont + 1);
+          pos = cont;
+          cont++;
+        }
+        cadastra_hospede(ph + pos, pq, 15)
+      break;
+    }//switch
+  }while(op!=5);
 }
 
 void aloca_quarto(quarto **q, int tam)
@@ -56,4 +80,22 @@ void cadastra_quarto(quarto *q, int tam)
     else
       q->categoria = 'F';
   }
+}
+
+void cadastra_hospede(hospede *h, quarto *q, int qq)
+{
+    printf("\nNome: ");
+    gets(h->nome);
+    fflush(stdin);
+    do{
+        printf("\nQtde de acompanhantes - max.3: ");
+        scanf("%i",&h->acompanhante);
+        fflush(stdin);
+    }while(h->acompanhante<0 || h->acompanhante>3);
+
+    if(h->acompanhante==0)
+        h->categoria='S';
+    else
+        h->categoria='F';
+    // ...
 }
